@@ -1,4 +1,4 @@
-# Get-EffectiveAccess
+# Get-ADEffectiveAccess
 
 ## Description
 
@@ -11,33 +11,33 @@ PowerShell function that tries to give a friendly translation of [`Get-Acl`](htt
 
 ```powershell
 Get-ADOrganizationalUnit -Filter "Name -eq 'ExampleOU'" |
-    Get-EffectiveAccess | Out-GridView
+    Get-ADEffectiveAccess | Out-GridView
 ```
 
 - Same as above but using the OU's `DistinguishedName` attribute:
 
 ```powershell
-Get-EffectiveAccess -Identity 'OU=ExampleOU,DC=domainName,DC=com' | Out-GridView
+Get-ADEffectiveAccess -Identity 'OU=ExampleOU,DC=domainName,DC=com' | Out-GridView
 ```
 
 - Get the _Effective Access_ of the Organizational Unit named `ExampleOU` on a Trusted Domain:
 
 ```sh
 Get-ADOrganizationalUnit -Filter "Name -eq 'ExampleOU'" -Server trustedDomain |
-    Get-EffectiveAccess -Server trustedDomain | Out-GridView
+    Get-ADEffectiveAccess -Server trustedDomain | Out-GridView
 ```
 
 - Store the _Effective Access_ of the group named `exampleGroup` in a variable:
 
 ```powershell
-$effectiveAccess = Get-ADGroup exampleGroup | Get-EffectiveAccess
+$effectiveAccess = Get-ADGroup exampleGroup | Get-ADEffectiveAccess
 ```
 
 - Get the _Effective Access_ of the first 10 OUs found in the Domain:
 
 ```powershell
 Get-ADOrganizationalUnit -Filter * | Select -First 10 |
-    Get-EffectiveAccess | Out-GridView
+    Get-ADEffectiveAccess | Out-GridView
 ```
 
 ## Sample output with `Out-GridView`
